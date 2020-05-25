@@ -3,7 +3,8 @@ it contains three standalone app and  main-app is dynamically loading introducti
 
 # Setup
 
-1. npm install to install packages
+1. npm install 
+2. npm setup to install packages 
 2. npm run dev to build files
 3. npm start to run applications.
 

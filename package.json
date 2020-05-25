@@ -4,8 +4,9 @@
   "devDependencies": {
     "lerna": "^3.22.0"
   },
-  "scripts":{
+  "scripts": {
     "start": "lerna run start",
-    "dev": "lerna run dev"
+    "dev": "lerna run dev",
+    "setup": "lerna exec npm install"
   }
 }
