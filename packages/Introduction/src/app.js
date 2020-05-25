@@ -1,5 +1,7 @@
 import React from 'react';
-const App = () =>{
+
+class App extends React.Component{
+    render(){
     return(
         <div>
             <p> Hello This is Introduction page </p>
@@ -7,5 +9,5 @@ const App = () =>{
         </div>
     );
 }
-
+}
 export default App;

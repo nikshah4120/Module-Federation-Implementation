@@ -60,11 +60,16 @@ module.exports = {
             filename: 'index.html'
         }),
        new ModuleFederationPlugin({
-            name:'app_main',
-            library: {type:'var', name:'app_main'},
+            name:'app_contact',
+            library: {type:'var', name:'app_contact'},
+            filename: 'remoteEntry.js',
             remotes:{
                 app_home:'app_home',
                 app_introduction:'app_introduction'
+            },
+            exposes:{
+               Navigation:'./src/navigation',
+               AppContainer: './src/app'
             },
             shared:['react','react-dom','react-router-dom']
         }),

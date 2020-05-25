@@ -1,19 +1,23 @@
 import React from 'react';
-import {Route,BrowserRouter as Router,Switch,Link} from 'react-router-dom';
-import Contact from './app';
-import Navigation from './navigation';
+import {Route,BrowserRouter as Router,Switch} from 'react-router-dom';
+import Home from './app';
 const Introduction=React.lazy(() => import('app_introduction/AppContainer'));
-const Home=React.lazy(() => import('app_home/AppContainer'));
+const Contact=React.lazy(() => import('app_contact/AppContainer'));
+const Navigation=React.lazy(()=>import('app_contact/Navigation'));
 const Routes = () =>{
     return(
     <Router>
-        <div>
+           
+        <div> 
         <React.Suspense fallback="loading ..">
-        <Navigation />
-            <Switch> 
+            <Navigation />
+            <Switch>
+            
+            
              <Route path="/contact"> <Contact /> </Route>
              <Route path="/introduction"> <Introduction /> </Route>
-             <Route path="/" exact> <Home /> </Route>
+             <Route path="/"> <Home /> </Route>
+             
              </Switch>
              </React.Suspense>
         </div>
