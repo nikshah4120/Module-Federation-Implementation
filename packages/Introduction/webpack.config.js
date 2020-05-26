@@ -67,7 +67,11 @@ module.exports = {
             exposes:{
              AppContainer:'./src/app',
             },
-            shared:['react','react-dom']
+            remotes:{
+              app_contact: 'app_contact',
+              app_home: 'app_home'
+            },
+            shared:['react','react-dom','react-router-dom']
         }),
         
     ],
