@@ -2,8 +2,12 @@ var path=require('path');
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
+const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
+const packageJson=require('./package.json');
+const exclude=["g","rimraf","express"];
+const ignoreVersion=["react","react-dom"];
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry:"./src/index.js",
     output:{
       //  publicPath: "https://dashboard-home.herokuapp.com/"
@@ -38,10 +42,10 @@ module.exports = {
             }
         ]
     },
-  //   devServer:{
-  //    contentBase: path.join(__dirname,"dist"),
-  //    port: process.env.port
-  //   },
+        devServer:{
+        contentBase: path.join(__dirname,"dist"),
+        port: 8080
+        },
       optimization: {
         splitChunks: {
          cacheGroups: {
@@ -70,8 +74,15 @@ module.exports = {
              app_contact:'app_contact',
              app_introduction: 'app_introduction'
             },
-            shared:['react','react-dom','react-router-dom']
-        }),
+           // shared:['react','react-dom','react-router-dom'],
+           shared: AutomaticVendorFederation({
+            exclude,
+            ignoreVersion,
+            packageJson,
+            shareFrom: ["dependencies"],
+            ignorePatchVersion: true,
+           }),
+         }),
         
     ],
 

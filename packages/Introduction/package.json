@@ -7,8 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "rimraf dist && webpack --config webpack.config.js",
-    "heroku-postbuild": "rimraf dist && webpack -p"
+    "build": "rimraf dist && webpack --config webpack.config.js",
+    "heroku-postbuild": "rimraf dist && webpack -p",
+    "dev": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "@module-federation/automatic-vendor-federation": "git+https://github.com/module-federation/automatic-vendor-federation.git",
     "webpack": "^5.0.0-beta.16",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
