@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "lerna run start",
-    "dev": "lerna run dev",
-    "setup": "lerna exec npm install"
+    "build": "lerna run build",
+    "setup": "lerna exec npm install",
+    "dev": "lerna run dev"
   }
 }
