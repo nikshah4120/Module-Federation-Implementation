@@ -1,5 +1,5 @@
-# Example-app
-it contains three standalone app and  main-app is dynamically loading introduction and home app
+# Routing example between three seperate apps
+it contains three standalone app.And each app contains routes to the other apps.
 
 # Setup
 
