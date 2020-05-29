@@ -1,6 +1,5 @@
 import React from 'react';
 //const News=React.lazy(()=>import('app_introduction/Mod'));
-import image from '../../Introduction/src/assests/news.jpg';
 class App extends React.Component{
     render(){
     return(
