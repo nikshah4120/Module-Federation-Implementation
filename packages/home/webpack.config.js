@@ -5,12 +5,14 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
 const exclude=["g","rimraf","express"];
-const ignoreVersion=["react","react-dom"];
+const ignoreVersion=["react","react-dom","typeface-roboto"];
 module.exports = {
     mode: 'development',
     entry:"./src/index.js",
     output:{
       //  publicPath: "https://dashboard-home.herokuapp.com/"
+          filename: '[name].[contenthash].js',
+          path: path.resolve(__dirname,'dist'),
           publicPath: "http://localhost:8080/"
     },
     module:{
@@ -53,7 +55,10 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true
+                enforce: true,
+                maxSize: 300000,
+                maxAsyncRequests: 6,
+                maxInitialRequests: 4,
              }
         }
     }

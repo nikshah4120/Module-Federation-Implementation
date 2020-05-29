@@ -9,11 +9,13 @@
     "start": "node server.js",
     "build": "rimraf dist && webpack --config webpack.config.js",
     "heroku-postbuild": "rimraf dist && webpack -p",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --open --hot"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
+    "@material-ui/icons": "^4.9.1",
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -24,9 +26,12 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "babel-loader": "^8.1.0",
-    "html-webpack-plugin": "^4.3.0",
     "@module-federation/automatic-vendor-federation": "git+https://github.com/module-federation/automatic-vendor-federation.git",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
     "webpack": "^5.0.0-beta.16",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"

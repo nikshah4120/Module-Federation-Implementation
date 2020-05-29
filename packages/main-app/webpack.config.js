@@ -10,6 +10,8 @@ module.exports = {
     mode: 'development',
     entry:"./src/index.js",
     output:{
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname,'dist'),
      //publicPath: "https://dashboard-main-app.herokuapp.com/"
        publicPath: "http://localhost:8081/"
     },
@@ -53,7 +55,10 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true
+                enforce: true,
+                maxSize: 300000,
+                maxAsyncRequests: 6,
+                maxInitialRequests: 4,
              }
         }
     }
@@ -72,7 +77,6 @@ module.exports = {
                 app_introduction:'app_introduction'
             },
             exposes:{
-               Navigation:'./src/navigation',
                AppContainer: './src/app'
             },
            // shared:['react','react-dom','react-router-dom']

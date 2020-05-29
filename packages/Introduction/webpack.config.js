@@ -4,14 +4,16 @@ var htmlWebpackPlugin=require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
-const exclude=["g","rimraf","express"];
+const exclude=["g","rimraf","express","file-loader"];
 const ignoreVersion=["react","react-dom"];
 
 module.exports = {
     mode: 'development',
     entry:"./src/index.js",
     output:{
-       publicPath: "http://localhost:8082/"
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname,'dist'),
+       publicPath: "http://localhost:8082/",
      //   publicPath: "https://dashboard-introduction.herokuapp.com/"
     },
     module:{
@@ -54,7 +56,10 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true
+                enforce: true,
+                maxSize: 300000,
+                maxAsyncRequests: 6,
+                maxInitialRequests: 4,
              }
         }
     }
@@ -71,6 +76,8 @@ module.exports = {
             library: {type:'var', name:'app_introduction'},
             exposes:{
              AppContainer:'./src/app',
+             Navigation:'./src/component/navmenu',
+             Mod: './src/component/modal'
             },
             remotes:{
               app_contact: 'app_contact',
