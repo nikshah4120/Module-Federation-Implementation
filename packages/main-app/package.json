@@ -27,7 +27,7 @@
     "start": "node server.js",
     "build": "rimraf dist && webpack --config webpack.config.js",
     "heroku-postbuild": "rimraf dist && webpack -p",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --open --hot"
   },
   "author": "",
   "license": "ISC"

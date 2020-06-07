@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route,BrowserRouter as Router,Switch,Link} from 'react-router-dom';
 import Contact from './app';
-import Navigation from './navigation';
+const Navigation=React.lazy(()=>import('app_introduction/Navigation'));
 const Introduction=React.lazy(() => import('app_introduction/AppContainer'));
 const Home=React.lazy(() => import('app_home/AppContainer'));
 const Routes = () =>{

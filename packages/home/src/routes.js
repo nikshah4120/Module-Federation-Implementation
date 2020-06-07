@@ -3,7 +3,7 @@ import {Route,BrowserRouter as Router,Switch} from 'react-router-dom';
 import Home from './app';
 const Introduction=React.lazy(() => import('app_introduction/AppContainer'));
 const Contact=React.lazy(() => import('app_contact/AppContainer'));
-const Navigation=React.lazy(()=>import('app_contact/Navigation'));
+const Navigation=React.lazy(()=>import('app_introduction/Navigation'));
 const Routes = () =>{
     return(
     <Router>
