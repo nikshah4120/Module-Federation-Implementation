@@ -1,5 +1,6 @@
 import React from 'react';
-//const News=React.lazy(()=>import('app_introduction/Mod'));
+//const News=require('app_introduction/Mod');
+const News=React.lazy(()=>import('app_introduction/Mod'));
 class App extends React.Component{
     render(){
     return(
@@ -7,6 +8,7 @@ class App extends React.Component{
          <p> This is Home page </p>
          <button> Home page </button>
          <React.Suspense fallback="loading..">
+             <News />
          </React.Suspense>
         </div>
     );

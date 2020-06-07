@@ -18,7 +18,7 @@
     "@module-federation/automatic-vendor-federation": "git+https://github.com/module-federation/automatic-vendor-federation.git",
     "babel-loader": "^8.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "webpack": "^5.0.0-beta.16",
+    "webpack": "git+https://github.com/webpack/webpack.git",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },

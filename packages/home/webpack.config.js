@@ -2,9 +2,12 @@ var path=require('path');
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
+const deps=require('./package.json').dependencies;
+/* Automatic Vendor Federation Part
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
 const exclude=["g","rimraf","express"];
+*/
 const ignoreVersion=["react","react-dom","typeface-roboto"];
 module.exports = {
     mode: 'development',
@@ -46,7 +49,7 @@ module.exports = {
     },
         devServer:{
         contentBase: path.join(__dirname,"dist"),
-        port: 8080
+        port: 8080,
         },
       optimization: {
         splitChunks: {
@@ -71,22 +74,21 @@ module.exports = {
        new ModuleFederationPlugin({
             name:'app_home',
             filename: 'remoteEntry.js',
-            library: {type:'var', name:'app_home'},
             exposes:{
-             AppContainer:'./src/app',
+             './AppContainer':'./src/app',
             },
             remotes:{
-             app_contact:'app_contact',
-             app_introduction: 'app_introduction'
+             app_contact:'app_contact@http://localhost:8081/remoteEntry.js',
+             app_introduction: 'app_introduction@http://localhost:8082/remoteEntry.js'
             },
-           // shared:['react','react-dom','react-router-dom'],
-           shared: AutomaticVendorFederation({
+           shared:['react','react-dom','react-router-dom'],
+          /* shared: AutomaticVendorFederation({
             exclude,
             ignoreVersion,
             packageJson,
             shareFrom: ["dependencies"],
             ignorePatchVersion: true,
-           }),
+           }),*/
          }),
         
     ],

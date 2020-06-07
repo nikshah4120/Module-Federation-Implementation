@@ -2,11 +2,13 @@ var path=require('path');
 var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
+const deps=require('./package.json').dependencies;
+/* Automatic Vendor Federation Part
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
 const exclude=["g","rimraf","express","file-loader"];
 const ignoreVersion=["react","react-dom"];
-
+*/
 module.exports = {
     mode: 'development',
     entry:"./src/index.js",
@@ -73,24 +75,40 @@ module.exports = {
        new ModuleFederationPlugin({
             name:'app_introduction',
             filename:'remoteEntry.js',
-            library: {type:'var', name:'app_introduction'},
             exposes:{
-             AppContainer:'./src/app',
-             Navigation:'./src/component/navmenu',
-             Mod: './src/component/modal'
+             './AppContainer':'./src/app',
+             './Navigation':'./src/component/navmenu',
+             './Mod': './src/component/modal'
             },
             remotes:{
-              app_contact: 'app_contact',
-              app_home: 'app_home'
+                app_contact:'app_contact@http://localhost:8081/remoteEntry.js',
+                app_home: 'app_home@http://localhost:8080/remoteEntry.js'
             },
-            //shared:['react','react-dom','react-router-dom']
-            shared: AutomaticVendorFederation({
+            shared:['@material-ui/core','@material-ui/icons','react','react-dom','react-router-dom'],
+           /* shared:{
+               "@material-ui/core": {
+                 requiredVersion: deps.@material-ui/core,
+               },
+               "@material-ui/icons": {
+                 requiredVersion: deps.@material-ui/icons,
+               },
+               "react" : {
+                   requiredVersion: deps.react,
+                   singleton: true
+               },
+               "react-dom":{
+                   requiredVersion:deps.react-dom,
+                   singleton: true
+               }
+            }
+           */
+            /* shared: AutomaticVendorFederation({
                exclude,
                ignoreVersion,
                packageJson,
                shareFrom: ["dependencies"],
                ignorePatchVersion: true,
-            }),
+            }),*/
         }),
         
     ],

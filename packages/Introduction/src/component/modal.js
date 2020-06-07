@@ -7,21 +7,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import pic from '../assests/news.jpg'
 const useStyles = makeStyles({
   root: {
-    width:'100%'
+    maxWidth: 400,
   },
 });
 
 export default function ImgMediaCard() {
   const classes = useStyles();
+  var Im1 = new Image (); 
+  Im1.src=pic;
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           component="img"
           alt="News"
-          height="140" 
+          height="140"
+          image = {Im1.src}
           title="Breaking News"
         />
         <CardContent>
