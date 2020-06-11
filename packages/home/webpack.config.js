@@ -3,12 +3,12 @@ var webpack=require('webpack');
 var htmlWebpackPlugin=require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const deps=require('./package.json').dependencies;
-/* Automatic Vendor Federation Part
+/* Automatic Vendor Federation Part  
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
 const exclude=["g","rimraf","express"];
+const ignoreVersion=["react","react-dom","react-router-dom"];
 */
-const ignoreVersion=["react","react-dom","typeface-roboto"];
 module.exports = {
     mode: 'development',
     entry:"./src/index.js",
@@ -29,7 +29,8 @@ module.exports = {
                     presets: [
                        '@babel/preset-env',
                        '@babel/preset-react'
-                    ]
+                    ],
+                    plugins:["@babel/plugin-transform-runtime"],
                  }
                 }
             },
@@ -58,10 +59,6 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true,
-                maxSize: 300000,
-                maxAsyncRequests: 6,
-                maxInitialRequests: 4,
              }
         }
     }
@@ -78,11 +75,12 @@ module.exports = {
              './AppContainer':'./src/app',
             },
             remotes:{
-             app_contact:'app_contact@http://localhost:8081/remoteEntry.js',
-             app_introduction: 'app_introduction@http://localhost:8082/remoteEntry.js'
+            /* Since we have loaded remote dynamically otherwise uncomment this part*/
+            // app_contact:'app_contact@http://localhost:8081/remoteEntry.js',
+            // app_introduction: 'app_introduction@http://localhost:8082/remoteEntry.js'
             },
            shared:['react','react-dom','react-router-dom'],
-          /* shared: AutomaticVendorFederation({
+         /*   shared: AutomaticVendorFederation({
             exclude,
             ignoreVersion,
             packageJson,

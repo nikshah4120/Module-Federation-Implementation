@@ -11,3 +11,4 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port);
+console.log("Home App is running at port: "+port);

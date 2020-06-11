@@ -6,8 +6,8 @@ const deps=require('./package.json').dependencies;
 /* Automatic Vendor Federation Part
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
-const exclude=["g","rimraf","express","file-loader"];
-const ignoreVersion=["react","react-dom"];
+const exclude=["g","rimraf","express"];
+const ignoreVersion=["react","react-dom","react-router-dom"];
 */
 module.exports = {
     mode: 'development',
@@ -58,10 +58,6 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true,
-                maxSize: 300000,
-                maxAsyncRequests: 6,
-                maxInitialRequests: 4,
              }
         }
     }
@@ -85,24 +81,7 @@ module.exports = {
                 app_home: 'app_home@http://localhost:8080/remoteEntry.js'
             },
             shared:['@material-ui/core','@material-ui/icons','react','react-dom','react-router-dom'],
-           /* shared:{
-               "@material-ui/core": {
-                 requiredVersion: deps.@material-ui/core,
-               },
-               "@material-ui/icons": {
-                 requiredVersion: deps.@material-ui/icons,
-               },
-               "react" : {
-                   requiredVersion: deps.react,
-                   singleton: true
-               },
-               "react-dom":{
-                   requiredVersion:deps.react-dom,
-                   singleton: true
-               }
-            }
-           */
-            /* shared: AutomaticVendorFederation({
+          /*   shared: AutomaticVendorFederation({
                exclude,
                ignoreVersion,
                packageJson,

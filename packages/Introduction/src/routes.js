@@ -8,14 +8,15 @@ const Routes = () =>{
     return(
     <Router>
         <div> 
+            
         <React.Suspense fallback="loading ..">
-             <Navigation />
+            <Navigation />
             <Switch>
              <Route path="/contact"> <Contact /> </Route>
              <Route path="/introduction"> <Introduction /> </Route>
              <Route path="/"> <Home /> </Route>
              </Switch>
-             </React.Suspense>
+        </React.Suspense>
             
         </div>
         </Router>

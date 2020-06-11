@@ -5,7 +5,7 @@
     "lerna": "^3.22.0"
   },
   "scripts": {
-    "start": "lerna run start",
+    "start": "lerna exec npm start",
     "build": "lerna run build",
     "setup": "lerna exec npm install",
     "dev": "lerna run dev --parallel"

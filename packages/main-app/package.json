@@ -1,8 +1,8 @@
 {
-  "name": "main-app",
+  "name": "contact",
   "version": "1.0.0",
   "private": true,
-  "description": "Main page App",
+  "description": "Contact page App",
   "main": "webpack.config.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "@module-federation/automatic-vendor-federation": "git+https://github.com/module-federation/automatic-vendor-federation.git",
@@ -25,7 +26,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "rimraf dist && webpack --config webpack.config.js",
+    "build": "rimraf dist && webpack -p",
     "heroku-postbuild": "rimraf dist && webpack -p",
     "dev": "webpack-dev-server --open --hot"
   },

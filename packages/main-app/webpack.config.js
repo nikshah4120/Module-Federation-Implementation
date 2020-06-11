@@ -7,7 +7,7 @@ const deps=require('./package.json').dependencies;
 const AutomaticVendorFederation=require('@module-federation/automatic-vendor-federation');
 const packageJson=require('./package.json');
 const exclude = ["rimraf","express","g"];
-const ignoreVersion=["react","react-dom"];
+const ignoreVersion=["react","react-dom","react-router-dom"];
 */
 module.exports = {
     mode: 'development',
@@ -15,8 +15,7 @@ module.exports = {
     output:{
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname,'dist'),
-     //publicPath: "https://dashboard-main-app.herokuapp.com/"
-       publicPath: "http://localhost:8081/"
+        publicPath: "http://localhost:8081/"
     },
     module:{
         rules:[
@@ -27,9 +26,10 @@ module.exports = {
                 loader: 'babel-loader',
                 options:{
                     presets: [
-                       '@babel/preset-env',
+                        '@babel/preset-env',
                        '@babel/preset-react'
-                    ]
+                    ],
+                    plugins:["@babel/plugin-transform-runtime"],
                  }
                 }
             },
@@ -58,10 +58,6 @@ module.exports = {
                 test: /node_modules/,
                 chunks: "initial",
                 name: "vendor",
-                enforce: true,
-                maxSize: 300000,
-                maxAsyncRequests: 6,
-                maxInitialRequests: 4,
              }
         }
     }
@@ -81,14 +77,8 @@ module.exports = {
             exposes:{
                './AppContainer': './src/app'
             },
-           /*  shared:{
-                "react" : {
-                   requiredVersion: deps.react,
-                   singleton: true
-               },
-            }*/
             shared:['react','react-dom','react-router-dom']
-         /*   shared: AutomaticVendorFederation({
+           /* shared: AutomaticVendorFederation({
             exclude,
             ignoreVersion,
             packageJson,
