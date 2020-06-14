@@ -10,7 +10,7 @@ const exclude=["g","rimraf","express"];
 const ignoreVersion=["react","react-dom","react-router-dom"];
 */
 module.exports = {
-    mode: 'development',
+ // mode: 'development', We will pass mode using CLI
     entry:"./src/index.js",
     output:{
       //  publicPath: "https://dashboard-home.herokuapp.com/"

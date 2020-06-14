@@ -8,6 +8,6 @@
     "start": "lerna exec npm start",
     "build": "lerna run build",
     "setup": "lerna exec npm install",
-    "dev": "lerna run dev --parallel"
+    "start:dev": "lerna exec npm run start:dev --parallel"
   }
 }

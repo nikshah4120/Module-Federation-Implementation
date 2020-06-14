@@ -10,7 +10,7 @@ const exclude = ["rimraf","express","g"];
 const ignoreVersion=["react","react-dom","react-router-dom"];
 */
 module.exports = {
-    mode: 'development',
+    // mode: 'development', We will pass mode using CLI
     entry:"./src/index.js",
     output:{
         filename: '[name].[contenthash].js',
@@ -48,7 +48,7 @@ module.exports = {
         ]
     },
       devServer:{
-        contentBase: path.join(__dirname,"dist"),
+       contentBase: path.join(__dirname,"dist"),
        port: 8081
        },
       optimization: {

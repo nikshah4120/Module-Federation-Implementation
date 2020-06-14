@@ -7,10 +7,12 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {Link} from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginBottom: theme.spacing(4),
+    backgroundColor:'#3f51b5'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -19,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
 export default function ButtonAppBar() {
   const classes = useStyles();
 

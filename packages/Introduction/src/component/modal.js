@@ -7,9 +7,19 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import pic from '../assests/news.jpg'
+import pic from '../assests/news.jpg';
+import { createMuiTheme,ThemeProvider} from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      root:{
+       backgroundColor: ["none"],
+      },
+    },
+  },
+});
 const useStyles = makeStyles({
-  root: {
+  card: {
     maxWidth: 400,
   },
 });
@@ -19,7 +29,8 @@ export default function ImgMediaCard() {
   var Im1 = new Image (); 
   Im1.src=pic;
   return (
-    <Card className={classes.root}>
+    <ThemeProvider theme={theme}>
+          <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -46,5 +57,7 @@ export default function ImgMediaCard() {
         </Button>
       </CardActions>
     </Card>
+    </ThemeProvider>
+
   );
 }

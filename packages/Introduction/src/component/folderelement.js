@@ -9,6 +9,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
