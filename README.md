@@ -3,20 +3,25 @@ it contains three standalone app.And each app contains routes to the other apps.
 
 # Setup
 
-1. npm install 
-2. npm setup to install packages
+1. **npm install** 
+2. **npm setup** to install packages
 
-For development mode:
- npm run stert:dev will build files and apps will be running on respective ports.
+##For development mode:
 
-For Production mode:
-npm run build will build apps.
-npm start will serve apps.
+ **npm run start:dev** will build files and apps will be running on respective ports.
+
+##For Production mode:
+
+**npm run build** will build apps.
+
+**npm start** will serve apps.
 
 
-main app is running on http://localhost:8081/
-home app is running on http://localhost:8080/
-introduction app is running on http://localhost:8082/
+**Contact app** is running on [http://localhost:8081/]
+
+**Home app** is running on [http://localhost:8080/]
+
+**Introduction app** is running on [http://localhost:8082/]
 
 
 # New Features added
