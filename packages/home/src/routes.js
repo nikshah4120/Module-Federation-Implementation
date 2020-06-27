@@ -73,8 +73,7 @@ function System(props) {
         return <h2>Failed to load dynamic script: {props.system.url}</h2>;
       }
   
-    const Component = React.lazy(loadComponent(props.system.scope, props.system.module)
-    );
+    const Component = React.lazy(loadComponent(props.system.scope, props.system.module));
   
       return (
       <React.Suspense fallback="Loading System">

@@ -5,7 +5,7 @@ class App extends React.Component{
     return(
         <div> 
             <p> Hello This is Contact page </p>
-            <button> Contact page </button>
+            <button> Contact page 1 </button>
             <News />
         </div>
     );

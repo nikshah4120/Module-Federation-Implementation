@@ -15,7 +15,7 @@ module.exports = {
     output:{
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname,'dist'),
-        publicPath: "http://localhost:8081/"
+        publicPath: process.env.ASSEST_PATH ||"http://localhost:8081/"
     },
     module:{
         rules:[
@@ -71,8 +71,10 @@ module.exports = {
             name:'app_contact',
             filename: 'remoteEntry.js',
             remotes:{
-                app_home:'app_home@http://localhost:8080/remoteEntry.js',
-                app_introduction: 'app_introduction@http://localhost:8082/remoteEntry.js'
+             //app_home : 'app_home@https://dashboard-home.herokuapp.com/',
+             //app_introduction : 'app_introduction@https://dashboard-home.herokuapp.com/',
+               app_home:'app_home@http://localhost:8080/remoteEntry.js',
+               app_introduction: 'app_introduction@http://localhost:8082/remoteEntry.js'
             },
             exposes:{
                './AppContainer': './src/app'

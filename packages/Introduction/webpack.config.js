@@ -78,6 +78,8 @@ module.exports = {
              './Mod': './src/component/modal'
             },
             remotes:{
+              //  app_home : 'app_home@https://dashboard-home.herokuapp.com/',
+               // app_contact : 'app_contact@https://dashboard-home.herokuapp.com/',
                 app_contact:'app_contact@http://localhost:8081/remoteEntry.js',
                 app_home: 'app_home@http://localhost:8080/remoteEntry.js'
             },

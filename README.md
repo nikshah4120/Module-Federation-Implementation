@@ -7,7 +7,7 @@ it contains three standalone app.And each app contains routes to the other apps.
 2. npm setup to install packages
 
 For development mode:
- npm run dev will build files and apps will be running on respective ports.
+ npm run stert:dev will build files and apps will be running on respective ports.
 
 For Production mode:
 npm run build will build apps.

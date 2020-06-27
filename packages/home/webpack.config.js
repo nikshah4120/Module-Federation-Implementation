@@ -16,7 +16,7 @@ module.exports = {
       //  publicPath: "https://dashboard-home.herokuapp.com/"
           filename: '[name].[contenthash].js',
           path: path.resolve(__dirname,'dist'),
-          publicPath: "http://localhost:8080/"
+          publicPath: process.env.ASSEST_PATH || "http://localhost:8080/"
     },
     module:{
         rules:[
